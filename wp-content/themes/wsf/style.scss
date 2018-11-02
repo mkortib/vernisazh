@@ -1033,12 +1033,13 @@ a {
   }
 
   .acs_bl {
+    display: flex;
     position: absolute;
     z-index: 2;
     top: 140px;
     right: 5%;
 
-    .last {
+    .last, .last2 {
       position: relative;
       background-color: #e62557;
       @include border-radius(1.25em, 1.25em, 1.25em, 1.25em);
@@ -1063,6 +1064,7 @@ a {
           line-height: 1;
         }
       }
+
       &:after {
         border: 10px solid transparent;
         border-bottom: 10px solid #e62557;
@@ -1076,6 +1078,28 @@ a {
         top: 50%;
         width: 0;
       }
+    }
+    .last2 {
+      margin-left: 5px;
+      margin-right: 40px;
+      display: flex;
+      background-color: #59C334;
+      p {
+        display: flex;
+      }
+      img {
+        position: relative;
+        top: 5px;
+        width: 28px;
+        height: 26px;
+        margin-right: 1rem;
+        display: block;
+      }
+    }
+
+    .last2:after {
+      border-bottom: 10px solid #59C334;
+      border-left: 10px solid #59C334;
     }
   }
 
@@ -3040,6 +3064,198 @@ a {
   }
 }
 
+//@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+//  $src: null;
+//
+//  $extmods: (
+//          eot: "?",
+//          svg: "#" + str-replace($name, " ", "_")
+//  );
+//
+//  $formats: (
+//          otf: "opentype",
+//          ttf: "truetype"
+//  );
+//
+//  @each $ext in $exts {
+//    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+//    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+//    $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+//  }
+//
+//  @font-face {
+//    font-family: quote($name);
+//    font-style: $style;
+//    font-weight: $weight;
+//    src: $src;
+//  }
+//}
+//
+//@include font-face(GothamPro, /fonts/GothamPro, 500, normal, eot woff2 woff);
+//@include font-face(GothamPro, /fonts/GothamPro, 800, bold, eot woff2 woff);
+//@include font-face(GothamPro, /fonts/GothamPro, 200, thin, eot woff2 woff);
+
+
+/******************************CALCULATE-TEMPLATE****************************/
+
+.main-content-wrapper {
+  padding: 129px 30px 80px;
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.about-flat {
+  position: relative;
+  padding-bottom: 150px;
+  margin-top: 74px;
+  .descr-flat {
+    position: relative;
+    width: 100%;
+    font-family: $light, sasns-serif;
+    font-size: 42px;
+    font-weight: 200;
+  }
+  .consualt-but {
+    font-family: $bold, sans-serif;
+    position: absolute;
+    bottom: 0;
+    right: 35%;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #ffffff;
+    padding: 15px 50px;
+    background-color: #E54040;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 40px;
+    box-shadow: 0px 1px 3px 2px rgba(0,0,0,0.3);
+  }
+
+}
+
+.items-descr {
+  color: #292929;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 68px;
+  .item {
+    //position: relative;
+    display: block;
+    padding-right: 30px;
+    &.title-item {
+      padding: 0;
+      margin-right: 60px;
+    }
+    img {
+      width: 76px;
+      height: 76px;
+    }
+    p, ul {
+      font-family: $medium, sans-serif;
+      position: relative;
+      font-size: 14px;
+    }
+    ul {
+      font-family: $light, sans-serif;
+      text-align: left;
+      font-size: 12px;
+      list-style-type: disc;
+      top: 50px;
+      left: 40px;
+      li {
+        white-space: nowrap;
+        font-weight: 100;
+        line-height: 20px;
+      }
+    }
+    p {
+      line-height: 20px;
+      top: 40px;
+
+    }
+  }
+  .last {
+    padding-right: 0;
+    img {
+      width: 90px;
+      height: 90px;
+      position: relative;
+      top: -10px;
+    }
+    p {
+      top: 25px;
+    }
+  }
+}
+
+/**InputRadio**/
+
+
+.radio * {
+  cursor: pointer;
+}
+
+.radio input {
+  opacity: 0;
+}
+
+.radio span {
+  position: relative;
+  display: inline-block;
+  margin-left: -25px;
+  vertical-align: top;
+  width: 14px; height: 14px;
+  border-radius: 2px;
+  border: 2px solid #ccc;
+}
+
+.radio:hover span {
+  border-color: #ccc;
+}
+
+.radio span:before {
+  content: ""; /* comment content to use custom icon classes */
+  position: absolute;
+  top: 0; left: 0;  right: 0; bottom: 0;
+  opacity: 0;
+  text-align: center;
+  font-size: 10px;
+  line-height: 10px;
+  vertical-align: middle;
+  color: #ccc;
+}
+
+/* override for radio */
+.radio span {
+  border-radius: 50%;
+}
+.radio span:before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin: 3px auto;
+  background-color: #9CD845;
+  border-radius: 100px;
+}
+
+.radio input[type=radio]:checked + span {
+  background-color: #fff;
+}
+
+.radio input[type=radio]:checked + span:before {
+  color: #fff;
+  opacity: 1;
+  transition: color .3s ease-out;
+}
+
+
+
+
+
+
 /******************************DOCS****************************/
 
 #docs {
@@ -3498,6 +3714,11 @@ a {
 /****************************MEDIA QUERIES**************************/
 
 @media only screen and (max-width: 1440px) {
+
+  .header-new .acs_bl .last2 img {
+    height: 23px;
+  }
+
   #contacts {
     background-position: -40px 80px;
   }
@@ -3517,6 +3738,7 @@ a {
 
 @media only screen and (max-width: 1366px) {
   html, body, #page {
+    overflow-x: hidden;
     font-size: 87.5%;
   }
 
@@ -3541,7 +3763,13 @@ a {
   }
 }
 
+
+
 @media only screen and (max-width: 1280px) {
+
+  .header-new .acs_bl .last2 img {
+    height: 23px;
+  }
 
   .header-new {
     .row-top {
@@ -3966,9 +4194,32 @@ a {
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .header-new .acs_bl .last p, .header-new .acs_bl .last2 p {
+    margin: 0 0px 0 5px;
+  }
+
+  .header-new .acs_bl .last p span, .header-new .acs_bl .last2 p span {
+    margin-right: 0.4rem;
+    font-size: 2rem;
+  }
+
+  .header-new .acs_bl .last2 img {
+    height: 20px;
+    width: 23px;
+    margin-right: 0.5rem;
+  }
+
+}
+
 @media only screen and (max-width: 414px) {
+  .header-new .acs_bl .last2 img {
+    top: 0;
+  }
 
   html, body, #page {
+    overflow-x: hidden;
     font-size: 72%;
   }
 
@@ -4037,7 +4288,7 @@ a {
       color: #ffffff;
       top: 100px;
       p {
-        margin: 10px 17px !important;
+        margin: 5px 0px !important;
       }
     }
 
@@ -4454,6 +4705,7 @@ a {
 @media only screen and (max-width: 374px) {
 
   html, body, #page {
+    overflow-x: hidden;
     font-size: 65%;
   }
 

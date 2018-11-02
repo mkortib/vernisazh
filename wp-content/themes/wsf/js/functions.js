@@ -6,6 +6,8 @@
             $('.header-socials').insertAfter('.mobile-menu .menu');
         }
 
+
+
         var slide = $('.anim-bg'),
             slideArr = slide.map(function () {
                 return this;
@@ -192,5 +194,7 @@
     if(pageURL==="https://vernisazh.com.ua/category/novyny/"||pageURL==="https://vernisazh.com.ua/ru/category/news/") {
         $("#menu-news-nav li:first-child").addClass("current-menu-item");
     }
+
+    // $('.item > p').equalHeights();
 
 })(jQuery);
