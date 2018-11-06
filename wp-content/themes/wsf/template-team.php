@@ -146,9 +146,16 @@ get_header(); ?>
             </div>
             <h2 class="title title-sub"><?php echo __('[:ru]Наши партнеры[:ua]Нашi партнери[:]');?></h2>
             <div class="partner-slider">
-                <div class="partner-itm"><img src="/img/kredobank_logo.svg" alt=""></div>
-                <div class="partner-itm"><img src="/img/volkswagen.svg" alt=""></div>
-                <div class="partner-itm"><a href="https://ostroyke.com.ua" target="_blank"><img src="/img/ostroyke_novostroiki_ukraine.png" alt=""></a></div>
+                <div class="frs-row">
+                    <div class="partner-itm"><img src="/img/kredobank_logo.svg" alt=""></div>
+                    <div class="partner-itm"><img src="/img/volkswagen.svg" alt=""></div>
+                    <div class="partner-itm"><a href="https://ostroyke.com.ua" target="_blank"><img src="/img/ostroyke_novostroiki_ukraine.png" alt=""></a></div>
+                </div>
+                <div class="scd-row">
+                    <div class="partner-itm"><img src="/img/partner2.jpg" alt=""></div>
+                    <div class="partner-itm"><img src="/img/prtner1.jpg" alt=""></div>
+                    <div class="partner-itm"><img src="/img/partner3.1.svg" alt=""></div>
+                </div>
             </div>
             <h3 class="title title-sub title-sub__bottom"><?php echo __('[:ru]Поддержка города и инициативной группы[:ua]Підтримка міста та ініціативної групи[:]');?></h3>
             <div class="txt txt-bottom">
