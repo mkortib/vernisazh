@@ -39,7 +39,7 @@
                                 <?php the_post_thumbnail(); ?>
                                 <p class="open"><?php echo __('[:ru]СМОТРЕТЬ[:ua]ДИВИТИСЬ[:]');?></p>
                             </a>
-                            <?php if ($class != null): ?>
+                            <?php if (($class != null) and (get_field('plan_name') != '1В') and (get_field('plan_name') != '1Г') and (get_field('plan_name') != '1И')): ?>
                                 <img src="/img/<?php echo __('[:ru]hit-label-ru[:ua]hit-label[:]');?>.png" class="label">
                             <?php endif; ?>
                         </div>

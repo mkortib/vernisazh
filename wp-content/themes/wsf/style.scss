@@ -1055,7 +1055,7 @@ a {
         font-family: $medium;
         @include fontSize(12px);
         text-transform: uppercase;
-        margin: 0 17px;
+        margin: 0 2px;
         line-height: 1.5;
         span {
           font-family: $bold;
@@ -3227,7 +3227,7 @@ a {
   width: 14px; height: 14px;
   border-radius: 2px;
   border: 2px solid #ccc;
-  box-shadow: 4px 0px 22px 0px rgba(0, 0, 0, 0.12);
+  //box-shadow: 4px 0px 22px 0px rgba(0, 0, 0, 0.12);
 }
 
 .radio:hover span {
@@ -3819,8 +3819,8 @@ a {
   }
 
   .f_1 {
-    max-width: 375px;
-    width: 100%;
+    //max-width: 375px;// changed 06.11.2018
+    width: 79%;
     @include flex();
     justify-content: space-between;
 
@@ -3829,6 +3829,23 @@ a {
       @include fontSize(12px);
       color: #767676;
       line-height: 1.75;
+    }
+
+    .pres {
+      color: #fff;
+      line-height: 20px;
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: underline;
+        img {
+          width: 13px;
+          height: 13px;
+          display: block;
+          margin-left: 6px;
+        }
+      }
     }
   }
 
@@ -4435,6 +4452,13 @@ a {
       }
     }
   }
+
+  #footer {
+    .f_1 {
+      width: 85%;
+    }
+  }
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -4587,6 +4611,40 @@ a {
       font-size: 39px;
     }
   }
+
+  #footer {
+    .w {
+      flex-direction: column;
+      padding: 15px 50px;
+    }
+    .f_1 {
+      width: 100%;
+      flex-direction: column;
+      p {
+        order: 2;
+        margin-top: 5px;
+      }
+      .pres {
+        order: 1;
+        margin-bottom: 10px;
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+        }
+        img {
+          margin-top: 5px;
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+    .f_2 {
+      margin-top: 10px;
+    }
+  }
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -5105,7 +5163,7 @@ a {
       text-align: center;
     }
     .f_2 {
-      margin: 25px auto;
+      margin: 15px auto;
     }
   }
 
@@ -5234,7 +5292,7 @@ a {
   }
   #footer {
     margin-top: 15px;
-    width: 557px;
+    width: 100%; // changed 06.11.2018
   }
   #footer .f_1 {
     max-width: 318px;

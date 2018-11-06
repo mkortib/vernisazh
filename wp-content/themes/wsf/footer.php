@@ -3,6 +3,7 @@
         <div class="f_1">
             <a href="http://vernisazh.com.ua" class="logo"><img src="/img/logo.svg"></a>
             <p>vernisazh.com.ua &copy; <?php echo __('[:ru]Все права защищенные[:ua]Усі права захищені[:]');?></p>
+            <p class="pres"><a href="/files/vernisazh_presentation.pdf" download ><?php echo __('[:ru]Cкачать презентацию жилого комплекса[:ua]Завантажити презентацію житлового комплексу[:]');?><img src="/img/down.png" alt="download"/></a></p>
         </div>
         <div class="f_2">
             <a href="https://wsf.com.ua/" rel="nofollow" target="_blank" class="dev-logo logo">

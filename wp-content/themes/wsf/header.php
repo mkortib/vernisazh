@@ -104,7 +104,7 @@
 
         <div class="acs_bl">
             <a href="/bezvidsotkova-rozstrochka-vid-zabudovnyka-2/" class="last"><p><span>0%</span><?php echo __('[:ru]Беспроцентная рассрочка[:ua]Безвідсоткова розстрочка[:]');?></p></a>
-            <a href="/category/investuvaty/" class="last2"><p><img src="/img/lines.png" alt="lines"><?php echo __('[:ru]Высокая строительная готовность[:ua]Висока будівельна готовність[:]');?></p></a>
+            <a href="/category/novyny/hid-budivnytstva/" class="last2"><p><img src="/img/lines.png" alt="lines"><?php echo __('[:ru]Высокая строительная готовность[:ua]Висока будівельна готовність[:]');?></p></a>
         </div>
     </header>
 

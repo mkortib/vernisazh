@@ -81,7 +81,7 @@ get_header(); ?>
                     забудовників Європи.');?></p>
             </div>
             <div class="row">
-                <img src="/img/inner-new.jpg" alt="Планировка квартиры" class="first-img">
+                <img src="/img/Vern_1p.png" alt="Планировка квартиры" class="first-img">
                 <div class="list-bl">
                     <h2 class="list-bl-title"><?php echo __('[:ru]Квартира с отделкой "под ключ" имеет ряд преимуществ[:ua]Квартира з обробкою "під ключ" має ряд переваг[:]');?>:</h2>
                     <ul>
@@ -122,7 +122,7 @@ get_header(); ?>
                         <li><?php echo __('[:ru]<span>Входные двери</span> металлические (противоударные)[:ua]<span>Вхідні двері</span> металеві (протиударні)[:]');?>.</li>
                     </ul>
                 </div>
-                <img src="/img/flats-img.jpg" alt="Квартири з ремонтом ЖК Вернісаж" class="features-img">
+                <img src="/img/Vern_2.png" alt="Квартири з ремонтом ЖК Вернісаж" class="features-img first-img">
             </div>
         </div>
     </div>
