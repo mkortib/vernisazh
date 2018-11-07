@@ -199,7 +199,7 @@
         var squareRange = $(this).val();
         var arrNumb = squareRange.split('.');
         $("#squareVal").val(arrNumb[0] + ',' + arrNumb[1] + ' м^2 грн');
-    })
+    });
 
     $("#frstIns").on('input', function() {
         var instRange = $(this).val();
@@ -213,7 +213,13 @@
         }
 
         $("#instVal").val(str);
-    })
-    // $('.item > p').equalHeights();
+    });
+
+
+    $('input#fname').on('input', function () {
+        $(this).val($(this).val().replace(/[0-9\\/^$.|?*+\-_()]/g, ""));
+    });
+
+
 
 })(jQuery);

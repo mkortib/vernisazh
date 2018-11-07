@@ -1968,6 +1968,7 @@ a {
           -webkit-box-shadow: 0 35px 50px -17px rgba(0, 0, 0, 0.35);
           -moz-box-shadow: 0 35px 50px -17px rgba(0, 0, 0, 0.35);
           box-shadow: 0 35px 50px -17px rgba(0, 0, 0, 0.35);
+          border-color: #ffe999;
         }
       }
       &:first-child {
@@ -1977,12 +1978,18 @@ a {
       }
       &:nth-child(2) {
         > a {
-          background: url("/img/bg_gal-2-new.jpg") center center no-repeat;
+          background-image: url("/img/hod_stro.jpg");
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: cover;
         }
       }
       &:nth-child(3) {
         > a {
-          background: url("/img/bg_gal-3.jpg") center center no-repeat;
+          background-image: url("/img/window.jpg");
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: cover;
         }
       }
     }
@@ -3218,7 +3225,7 @@ a {
   }
 }
 
-/**InputRadio**/
+/****************************InputRadio***************************/
 
 
 .radio * {
@@ -3234,7 +3241,8 @@ a {
   display: inline-block;
   margin-left: -25px;
   vertical-align: top;
-  width: 14px; height: 14px;
+  width: 14px;
+  height: 14px;
   border-radius: 2px;
   border: 2px solid #ccc;
   //box-shadow: 4px 0px 22px 0px rgba(0, 0, 0, 0.12);
@@ -3256,11 +3264,26 @@ a {
   color: #ccc;
 }
 
+.radio {
+  span:after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: #ccc;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    border-radius: 50%;
+    z-index: 2;
+  }
+}
+
 /* override for radio */
 .radio span {
   border-radius: 50%;
 }
 .radio span:before {
+  z-index: 3;
   content: "";
   width: 8px;
   height: 8px;
@@ -3445,7 +3468,7 @@ a {
     font-size: 14px;
     position: relative;
     top: -2px;
-    width: 50%;
+    width: 24%;
     margin: 0;
     // margin-left: 10px;
     border: none;
@@ -3453,7 +3476,7 @@ a {
     border-bottom: 2px solid rgba(#292929, .4);
     margin-right: 20px;
   }
-  input[type=button] {
+  button {
     box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.26);
     display: inline-block;
     border: none;
@@ -3549,7 +3572,73 @@ a {
   }
 }
 
+/*****/
 
+.advanteges-wrap {
+  margin-top: 75px;
+  h2 {
+    font-family: $light, sans-serif;
+    font-size: 42px;
+  }
+  .adw-items {
+    padding: 50px 100px;
+  }
+}
+
+.adw-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .frst-col, .scnd-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .item {
+      padding-top: 90px;
+      position: relative;
+      text-align: center;
+      font-size: 15px;
+      color: #292929;
+      img {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 0;
+        position: absolute;
+      }
+      h4 {
+        line-height: 19px;
+        font-family: $bold, sans-serif;
+      }
+      p {
+        line-height: 19px;
+        font-family: $light, sans-serif;
+      }
+    }
+    .item:not(last-child) {
+      margin-bottom: 30px;
+    }
+  }
+  .frst-col {
+    max-width: 300px;
+    h4 {
+      width: 228px;
+      margin: auto;
+      margin-bottom: 10px;
+    }
+  }
+
+  .scnd-col {
+    max-width: 340px;
+    h4 {
+      margin-bottom: 10px;
+    }
+    p {
+      margin: auto;
+      max-width: 300px;
+    }
+  }
+}
 
 
 
@@ -4157,7 +4246,7 @@ a {
     }
   }
   .send-wrap {
-    input[type=button] {
+    button {
       padding: 10px 20px;
       font-size: 12px;
     }
@@ -4362,8 +4451,8 @@ a {
   #docs {
 
     h1 {
-      padding: 152px 0;
-      text-align: center;
+      padding: 152px 100px;
+      text-align: left;
     }
 
     .docs-bl img {
@@ -4485,6 +4574,17 @@ a {
     max-width: 122px;
   }
 
+  .advanteges-wrap {
+    h2 {
+      text-align: center;
+      line-height: 35px;
+      font-size: 33px;
+    }
+    .adw-items {
+      padding: 50px 0px;
+    }
+  }
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -4533,6 +4633,7 @@ a {
 
       .member {
         width: 335px;
+        margin: auto;
       }
 
       &::before {
@@ -4598,7 +4699,8 @@ a {
   #docs {
 
     h1 {
-      padding: 162px 0 50px;
+      font-size: 39px;
+      padding: 162px 0 50px 96px;
     }
 
     .docs-bl img {
@@ -4674,6 +4776,22 @@ a {
   .team {
     .partner-slider {
       padding: 55px 37px;
+    }
+    .title-main {
+        margin: 100px auto 50px;
+    }
+  }
+
+  #contacts {
+    .w {
+      padding: 198px 100px 45px 100px;
+    }
+  }
+
+  .advanteges-wrap {
+    .adw-items {
+      flex-direction: column;
+      padding: 50px 0 0;
     }
   }
 
@@ -4788,7 +4906,7 @@ a {
         margin-top: 0;
       }
     }
-    input[type=button] {
+    button {
       margin-top: 20px;
       margin-left: 0;
     }
@@ -4829,7 +4947,7 @@ a {
   }
 
   .send-wrap {
-    input[type=button] {
+    button {
       padding: 15px 20px;
     }
   }
@@ -4847,6 +4965,15 @@ a {
       font-size: 12px;
     }
   }
+
+  #docs {
+    h1 {
+      padding: 253px 0 0px 0px;
+      text-align: center;
+    }
+  }
+
+
 
 
 }
@@ -5157,7 +5284,7 @@ a {
   #contacts {
     background-position: -830px 80px;
     .w {
-      padding: 140px 20px 45px 20px;
+      padding: 180px 20px 45px 20px;
       p, a, button {
         @include fontSize(20px);
       }
@@ -5216,8 +5343,7 @@ a {
   }
 
   .team {
-    padding: 80px 0 0 80px;
-    width: 393px;
+    width: 100%;
 
     &-holder {
       justify-content: center;
@@ -5417,12 +5543,41 @@ a {
   }
 
   .send-wrap {
-    input[type=button] {
+    button {
       padding: 15px 20px;
     }
   }
 
+  .team {
+    .title-main {
+      margin: 50px auto 50px;
+    }
+  }
 
+  #docs {
+    h1 {
+      padding: 194px 0 0 0;
+    }
+  }
+
+  .advanteges-wrap {
+    font-size: 30px;
+  }
+
+  #gallery {
+    h1 {
+      margin: 40px 0 10px 20px;
+    }
+  }
+
+  .news-nav {
+    li {
+      a {
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
+  }
 
 }
 
@@ -5441,6 +5596,7 @@ a {
   .team .photo-wrap img {
      max-width: 300px;
    }
+
 }
 
 @media only screen and (max-width: 374px) {

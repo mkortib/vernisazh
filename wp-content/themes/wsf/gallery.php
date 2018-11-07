@@ -23,7 +23,7 @@ get_header(); ?>
                 <div>
                     <a href="/galereya/vizualizatsiyi.html">
                 </a>
-                <p class="n"><a href="/galereya/vizualizatsiyi.html"><?php echo __('[:ru]Визуализации[:ua]Візуалізації[:]');?></a></p>
+                <p class="n"><a href="/galereya/vizualizatsiyi.html"><?php echo __('[:ru]Наш дом[:ua]Наш будинок[:]');?></a></p>
                 </div>
                 <div>
                 <a href="/galereya/hid-budivnytsvta.html">

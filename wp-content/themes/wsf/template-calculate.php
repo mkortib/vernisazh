@@ -7,6 +7,38 @@ get_header() ?>
 
 <section id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
+
+        <article id="post-<?php the_ID(); ?>" <?php post_class('post-last'); ?>>
+            <div class="img-date-w">
+                <?php the_post_thumbnail();?>
+
+                <p class="date-cnt">
+                    <?php echo get_the_date('d.m.y'); ?>
+                </p>
+            </div>
+
+            <div class="post-cnt">
+                <?php
+                if (is_single()) :
+                    the_title('<h1 class="entry-title">', '</h1>');
+                else :
+                    the_title(sprintf('<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h2>');
+                endif;
+                ?>
+
+                <?php the_excerpt(); ?>
+                <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="morelink"><?php echo __('[:ru]Смотреть[:ua]Читати[:]'); ?></a>
+            </div>
+            <header class="entry-header">
+            </header>
+
+            <footer class="entry-footer">
+                <?php edit_post_link(__('Edit', 'wsf'), '<span class="edit-link">', '</span>'); ?>
+            </footer>
+            <img class="label" src="/img/action_now_<?php echo __('[:ru]rus[:ua]ukr[:]') ?>.png">
+        </article>
+
+
         <div class="main-content-wrapper">
 
             <header class="page-header"><p></p><div class="sold-out">Квартири від&nbsp;<strong>10 000</strong> грн за м<sup>2</sup></div><p></p></header>
@@ -66,7 +98,7 @@ get_header() ?>
                     <div class="calculate-blocks">
 
                         <div class="calculate-block">
-                            <form class="cal-form">
+                            <form class="cal-form" name="contactform">
                                 <div class="room-amount">
                                     <h4>Выберите количество комнат:</h4>
                                     <p class="throwdown">Сбросить все</p>
@@ -74,14 +106,14 @@ get_header() ?>
                                         <!-- <div class="f-col"> -->
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="rooms" id="oneroom" value="oneroom">
+                                                <input type="radio" name="rooms" id="oneroom" value="oneroom" />
                                                 <span class="f-room"></span>
                                                 1-комнатная
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="rooms" id="tworooms" value="tworooms">
+                                                <input type="radio" name="rooms" id="tworooms" value="tworooms" />
                                                 <span></span>
                                                 2-комнатная
                                             </label>
@@ -91,14 +123,14 @@ get_header() ?>
 
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="rooms" id="threerooms" value="threerooms">
+                                                <input type="radio" name="rooms" id="threerooms" value="threerooms" />
                                                 <span></span>
                                                 3-комнатная
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="rooms" id="smart" value="smart">
+                                                <input type="radio" name="rooms" id="smart" value="smart" />
                                                 <span class="lm"></span>
                                                 Smart
                                             </label>
@@ -112,28 +144,28 @@ get_header() ?>
                                     <div class="radio-wrap">
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="sect" id="fsect" value="fsect">
+                                                <input type="radio" name="sect" id="fsect" value="fsect" />
                                                 <span class="f-room"></span>
                                                 1 секция
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="sect" id="ssect" value="ssect">
+                                                <input type="radio" name="sect" id="ssect" value="ssect" />
                                                 <span></span>
                                                 2 секция
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="sect" id="tsect" value="tsect">
+                                                <input type="radio" name="sect" id="tsect" value="tsect" />
                                                 <span></span>
                                                 3 секция
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="sect" id="ssmart" value="ssmart">
+                                                <input type="radio" name="sect" id="ssmart" value="ssmart" />
                                                 <span class="lm"></span>
                                                 Smart
                                             </label>
@@ -146,12 +178,12 @@ get_header() ?>
                                     <div class="square-header">
                                         <label>
                                             <h4>Выберите площадь вашей квартиры:</h4>
-                                            <input type="text" value="56,22 uhy" name="swuarevalue" id="squareVal" disabled>
+                                            <input type="text" value="56,22 uhy" name="swuarevalue" id="squareVal" disabled />
                                         </label>
                                     </div>
                                     <div class="square-calc">
                                         <p>56,22 м^2</p>
-                                        <input type="range" name="square" id="squareMeasure" min="56.22" max="84.88" value="57" step="0.1">
+                                        <input type="range" name="square" id="squareMeasure" min="56.22" max="84.88" value="57" step="0.1" />
                                         <p>84,88 м^2</p>
                                     </div>
 
@@ -162,28 +194,28 @@ get_header() ?>
                                     <div class="radio-wrap">
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="mounth" id="sixm" value="sixm">
+                                                <input type="radio" name="mounth" id="sixm" value="sixm" />
                                                 <span class="f-room"></span>
                                                 6 месяцев
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="mounth" id="twm" value="twm">
+                                                <input type="radio" name="mounth" id="twm" value="twm" />
                                                 <span></span>
                                                 12 месяцев
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="mounth" id="eightm" value="eightm">
+                                                <input type="radio" name="mounth" id="eightm" value="eightm" />
                                                 <span></span>
                                                 18 месяцев
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="mounth" id="twfm" value="twfm">
+                                                <input type="radio" name="mounth" id="twfm" value="twfm" />
                                                 <span class="lm"></span>
                                                 24 месяца
                                             </label>
@@ -196,12 +228,12 @@ get_header() ?>
                                     <div class="installment-header">
                                         <label>
                                             <h4>Укажите первый взнос:</h4>
-                                            <input type="text" value="90 000 грн" name="installmentevalue" id="instVal" disabled>
+                                            <input type="text" value="90 000 грн" name="installmentevalue" id="instVal" disabled />
                                         </label>
                                     </div>
                                     <div class="installment-calc">
                                         <p>50 000 грн</p>
-                                        <input type="range" name="intallment" id="frstIns" min="50000" max="368000" value="90000" step="1000">
+                                        <input type="range" name="intallment" id="frstIns" min="50000" max="368000" value="90000" step="1000" />
                                         <p>368 000 грн</p>
                                     </div>
 
@@ -209,9 +241,10 @@ get_header() ?>
 
                                 <div class="send-wrap">
 
-                                    <input type="text" name="name" placeholder="Ваше имя" id="fname" required>
-                                    <input type="text" name="phone" placeholder="Номер телефона" id="ffone" required>
-                                    <input type="button" name="sendbut" id="sendbut" value="ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ">
+                                    <input type="text" name="name" placeholder="Ваше имя" id="fname" required />
+                                    <input type="text" name="phone" placeholder="Номер телефона" id="ffone" required />
+<!--                                    <input type="button" name="sendbut" id="sendbut" value="ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ" />-->
+                                    <button name="sendbut" id="sendbut">ЗАКАЗАТЬ КОНСУЛЬТАЦИЮ</button>
 
                                 </div>
 
@@ -246,6 +279,51 @@ get_header() ?>
 
                         </div>
 
+
+                </div>
+
+            </div>
+
+            <div class="advanteges-wrap">
+
+                <h2>Выгоды инвестирования в ЖК “Вернисаж”</h2>
+
+                <div class="adw-items">
+
+                    <div class="frst-col">
+                        <div class="item">
+                            <img src="/img/advantages/item1.png" alt="shops">
+                            <h4>Магазины и отделы бытовых услуг</h4>
+                            <p>Жилой комплекс «Вернисаж» - это идеальное место для инвестиций в объекты малого бизнеса.</p>
+                        </div>
+                        <div class="item">
+                            <img src="/img/advantages/item3.png" alt="restourants">
+                            <h4>Кафе, пабы, кофейни, рестораны</h4>
+                            <p>Жилой комплекс «Вернисаж» - это идеальное место для инвестиций в объекты малого бизнеса.</p>
+                        </div>
+                        <div class="item">
+                            <img src="/img/advantages/item5.png" alt="many people">
+                            <h4>Высокая загруженность людьми</h4>
+                            <p>Жилой комплекс «Вернисаж» - это идеальное место для инвестиций в объекты малого бизнеса.</p>
+                        </div>
+                    </div>
+                    <div class="scnd-col">
+                        <div class="item">
+                            <img src="/img/advantages/item2.png" alt="medicine">
+                            <h4>Аптеки и частные больницы (стоматологии, частные консультации)</h4>
+                            <p>Жилой комплекс «Вернисаж» - это идеальное место для инвестиций в объекты малого бизнеса.</p>
+                        </div>
+                        <div class="item">
+                            <img src="/img/advantages/item4.png" alt="kids center">
+                            <h4>Развлекательные детские центры и студии танцев</h4>
+                            <p>Жилой комплекс «Вернисаж» - это идеальное место для инвестиций в объекты малого бизнеса.</p>
+                        </div>
+                        <div class="item">
+                            <img src="/img/advantages/item6.png" alt="gym">
+                            <h4>Фитнес-центр, салон красоты</h4>
+                            <p>Жилой комплекс «Вернисаж» - это идеальное место для инвестиций в объекты малого бизнеса.</p>
+                        </div>
+                    </div>
 
                 </div>
 
