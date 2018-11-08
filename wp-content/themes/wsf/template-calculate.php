@@ -8,37 +8,6 @@ get_header() ?>
 <section id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
 
-        <article id="post-<?php the_ID(); ?>" <?php post_class('post-last'); ?>>
-            <div class="img-date-w">
-                <?php the_post_thumbnail();?>
-
-                <p class="date-cnt">
-                    <?php echo get_the_date('d.m.y'); ?>
-                </p>
-            </div>
-
-            <div class="post-cnt">
-                <?php
-                if (is_single()) :
-                    the_title('<h1 class="entry-title">', '</h1>');
-                else :
-                    the_title(sprintf('<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h2>');
-                endif;
-                ?>
-
-                <?php the_excerpt(); ?>
-                <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="morelink"><?php echo __('[:ru]Смотреть[:ua]Читати[:]'); ?></a>
-            </div>
-            <header class="entry-header">
-            </header>
-
-            <footer class="entry-footer">
-                <?php edit_post_link(__('Edit', 'wsf'), '<span class="edit-link">', '</span>'); ?>
-            </footer>
-            <img class="label" src="/img/action_now_<?php echo __('[:ru]rus[:ua]ukr[:]') ?>.png">
-        </article>
-
-
         <div class="main-content-wrapper">
 
             <header class="page-header"><p></p><div class="sold-out">Квартири від&nbsp;<strong>10 000</strong> грн за м<sup>2</sup></div><p></p></header>
@@ -144,30 +113,30 @@ get_header() ?>
                                     <div class="radio-wrap">
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="sect" id="fsect" value="fsect" />
+                                                <input type="radio" name="sect" id="fsect" value="11000" />
                                                 <span class="f-room"></span>
                                                 1 секция
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="sect" id="ssect" value="ssect" />
+                                                <input type="radio" name="sect" id="ssect" value="11000" />
                                                 <span></span>
                                                 2 секция
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="sect" id="tsect" value="tsect" />
+                                                <input type="radio" name="sect" id="tsect" value="12000" />
                                                 <span></span>
                                                 3 секция
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="sect" id="ssmart" value="ssmart" />
+                                                <input type="radio" name="sect" id="ssmart" value="12000" />
                                                 <span class="lm"></span>
-                                                Smart
+                                                4 секция
                                             </label>
                                         </div>
                                     </div>
@@ -178,13 +147,16 @@ get_header() ?>
                                     <div class="square-header">
                                         <label>
                                             <h4>Выберите площадь вашей квартиры:</h4>
-                                            <input type="text" value="56,22 uhy" name="swuarevalue" id="squareVal" disabled />
+                                            <div class="inp-block">
+                                                <input type="text" value="56.22" name="swuarevalue" id="squareVal" placeholder="56.22"/>
+                                                <p>м<sup>2</sup></p>
+                                            </div>
                                         </label>
                                     </div>
                                     <div class="square-calc">
-                                        <p>56,22 м^2</p>
-                                        <input type="range" name="square" id="squareMeasure" min="56.22" max="84.88" value="57" step="0.1" />
-                                        <p>84,88 м^2</p>
+                                        <p>22 м<sup>2</sup></p>
+                                        <input type="range" name="square" id="squareMeasure" min="22" max="114" value="22" step="0.1" />
+                                        <p>114 м<sup>2</sup></p>
                                     </div>
 
                                 </div>
@@ -194,28 +166,28 @@ get_header() ?>
                                     <div class="radio-wrap">
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="mounth" id="sixm" value="sixm" />
+                                                <input type="radio" name="mounth" id="sixm" value="6" />
                                                 <span class="f-room"></span>
                                                 6 месяцев
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="mounth" id="twm" value="twm" />
+                                                <input type="radio" name="mounth" id="twm" value="12" />
                                                 <span></span>
                                                 12 месяцев
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="mounth" id="eightm" value="eightm" />
+                                                <input type="radio" name="mounth" id="eightm" value="18" />
                                                 <span></span>
                                                 18 месяцев
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="mounth" id="twfm" value="twfm" />
+                                                <input type="radio" name="mounth" id="twfm" value="24" />
                                                 <span class="lm"></span>
                                                 24 месяца
                                             </label>
@@ -228,13 +200,22 @@ get_header() ?>
                                     <div class="installment-header">
                                         <label>
                                             <h4>Укажите первый взнос:</h4>
-                                            <input type="text" value="90 000 грн" name="installmentevalue" id="instVal" disabled />
+                                            <div class="bl-all">
+                                                <div class="inp-block">
+                                                    <input type="text" value="" name="installmentevalue" id="instVal"  placeholder="min 50 000"/>
+                                                    <p>грн</p>
+                                                </div>
+                                                <div class="inp-block">
+                                                    <input type="text" value="0" name="installmentevalue" id="pers" disabled/>
+                                                    <p>%</p>
+                                                </div>
+                                            </div>
                                         </label>
                                     </div>
                                     <div class="installment-calc">
-                                        <p>50 000 грн</p>
-                                        <input type="range" name="intallment" id="frstIns" min="50000" max="368000" value="90000" step="1000" />
-                                        <p>368 000 грн</p>
+                                        <p id="minval">50 000 грн</p>
+                                        <input type="range" value="50000" name="intallment" id="frstIns" min="50000" max="1200000" step="1000" />
+                                        <p id="maxval">1 000 000 грн</p>
                                     </div>
 
                                 </div>
@@ -252,26 +233,29 @@ get_header() ?>
                         </div>
                         <div class="calculate-res">
 
+                            <div class="res-all">
+                                <h4>Платеж по рассрочке:</h4>
+                                <p class="payformouth">0 грн/мес</p>
+                            </div>
+
                             <div class="res-descr">
                                 <h4>Сума рассрочки:</h4>
-                                <p>278 000 грн</p>
-                                <h4>Стоимость м^2:</h4>
-                                <p>11 000 грн</p>
+                                <p class="rostr-sum">0 грн</p>
+                                <h4>Стоимость м<sup>2</sup>:</h4>
+                                <p class="priseofmtr">0 грн</p>
+                                <h4>Первый взнос:</h4>
+                                <p class="finst">0 грн</p>
                             </div>
 
                             <div class="res-price">
                                 <h4>При первичном взносе в <span>30%</span>:</h4>
-                                <p>1700 грн/мес и 0% скидки</p>
+                                <p><span id="dis0">0</span> грн/мес и 0% скидки</p>
                                 <h4>При первичном взносе в <span>50%</span>:</h4>
-                                <p>1100 грн/мес и 3% скидки</p>
+                                <p><span id="dis1">0</span> грн/мес и 3% скидки</p>
                                 <h4>При первичном взносе в <span>75%</span>:</h4>
-                                <p>865 грн/мес и 5% скидки</p>
+                                <p><span id="dis2">0</span> грн/мес и 5% скидки</p>
                             </div>
 
-                            <div class="res-all">
-                                <h4>Платеж по рассрочке:</h4>
-                                <p>2 829 грн/мес</p>
-                            </div>
 
                             <div class="save-count">
                                 <a href="#">Cкачать просчет</a>

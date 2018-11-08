@@ -195,26 +195,111 @@
         $("#menu-news-nav li:first-child").addClass("current-menu-item");
     }
 
+    var squareRange;
+    var squareVal = $('#squareVal').val();
+    var instalVal = $("#instVal").val();
+    var instalPer;
+    var frstIns;
+    var section;
+    var rassroch;
+    var month;
+    var month0per;
+    var month3per;
+    var month5per;
+    var curmonth;
+    var minval;
+    var maxval;
+
+    $(".section-amount input").click(function (){
+       section = $(this).val();
+    });
+
+    $(".credit-amount input").click(function (){
+        curmonth = $(this).val();
+    });
+
     $("#squareMeasure").on('input', function() {
-        var squareRange = $(this).val();
-        var arrNumb = squareRange.split('.');
-        $("#squareVal").val(arrNumb[0] + ',' + arrNumb[1] + ' м^2 грн');
+        squareRange = $(this).val();
+        minval = (squareVal * section * 30) / 100;
+        maxval = (squareVal * section * 95) / 100;
+        $("#squareVal").val(squareRange);
+        $("#minval").html(minval.toFixed(0) + ' грн');
+        $("#maxval").html(maxval.toFixed(0) + ' грн');
+        $("#frstIns").attr("min", minval.toFixed(0));
+        $("#frstIns").attr("max" ,maxval.toFixed(0));
+    });
+
+    $("#squareVal").on('input', function() {
+        squareVal = $(this).val();
+        minval = (squareVal * section * 30) / 100;
+        maxval = (squareVal * section * 75) / 100;
+        $("#squareMeasure").val(squareVal);
+        $("#minval").html(minval.toFixed(0) + ' грн');
+        $("#maxval").html(maxval.toFixed(0) + ' грн')
+    });
+
+    // $("#instVal").on('input', function() {
+    //     instalVal = $(this).val();
+    //     $("#frstIns").val(instalVal);
+    // });
+
+    $("#instVal").on('input', function() {
+        // $(this).val($(this).val().replace (/\D/, ''));
+        instalVal = $(this).val();
+        $("#frstIns").val(instalVal);
+        if ((instalVal != '') && (squareVal != '' || squareVal != 0) && (section != undefined) && (curmonth != undefined)) {
+            var res = instalVal / (squareVal * section) * 100;
+            rassroch = (squareVal * section) - instalVal;
+            month = rassroch / curmonth;
+            month3per = (rassroch - (rassroch * 3 / 100)) / curmonth;
+            month5per = (rassroch - (rassroch * 5 / 100)) / curmonth;
+            $("#pers").val(res.toFixed(2));
+
+            $(".payformouth").html(month.toFixed(0) + " грн/мес");
+            $(".rostr-sum").html(rassroch + " грн");
+            $(".priseofmtr").html(section + " грн");
+            $(".finst").html(instalVal + " грн");
+
+            $("#dis0").html(month.toFixed(0));
+            $("#dis1").html(month3per.toFixed(0));
+            $("#dis2").html(month5per.toFixed(0));
+
+        } else {
+            alert ("Проверьте корректность данных");
+        }
     });
 
     $("#frstIns").on('input', function() {
         var instRange = $(this).val();
-        var arrNumb = instRange.split('');
-        var zeroCount = 0;
-        var str;
-        if (arrNumb.length < 6) {
-            str = arrNumb[0] + arrNumb[1] + ' ' + arrNumb[2] + arrNumb[3] + arrNumb[4] + ' грн';
-        } else {
-            str = arrNumb[0] + arrNumb[1] + arrNumb[2] + ' ' + arrNumb[3] + arrNumb[4] + arrNumb[5] + ' грн';
-        }
+        // var arrNumb = instRange.split('');
+        // var zeroCount = 0;
+        // var str;
+        $("#instVal").val(instRange);
+        if ((squareVal != '' || squareVal != 0) && (section != undefined) && (curmonth != undefined)) {
+            var res = instRange / (squareVal * section) * 100;
 
-        $("#instVal").val(str);
+            $("#pers").val(res.toFixed(2));
+            $(".payformouth").html(month.toFixed(2) + " грн/мес");
+            $(".rostr-sum").html(rassroch + " грн");
+            $(".priseofmtr").html(section + " грн");
+            $(".finst").html(instalVal + " грн");
+
+            $("#dis0").html(month.toFixed(0));
+            $("#dis1").html(month3per.toFixed(0));
+            $("#dis2").html(month5per.toFixed(0));
+
+        } else {
+            alert ("Проверьте корректность данных");
+        }
     });
 
+    $('.throwdown').click(function() {
+       $('.cal-form').find('input[type=text]').val('');
+       $('.payformouth, .rostr-sum, .priseofmtr, .finst').html('0' + ' грн');
+       $('#dis0, #dis1, #dis2').html('0');
+       $('input[type=radio]').prop( "checked", false );
+       $('input[type=range]').val('');
+    });
 
     $('input#fname').on('input', function () {
         $(this).val($(this).val().replace(/[0-9\\/^$.|?*+\-_()]/g, ""));

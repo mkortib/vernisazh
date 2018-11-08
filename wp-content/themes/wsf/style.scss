@@ -3402,19 +3402,52 @@ a {
     h4 {
       font-family: $bold, sans-serif;
     }
+    .bl-all {
+      display: flex;
+      .inp-block {
+        p {
+          bottom: 1px;
+        }
+        input {
+          width: 35px;
+        }
+        width: 50px;
+        &:first-child {
+          width: 120px;
+          input {
+            width: 80px;
+          }
+        }
+      }
+
+    }
+    .inp-block {
+      justify-content: center;
+      margin-left: 10px;
+      display: flex;
+      width: 120px;
+      border-bottom: 2px solid rgba(#292929, .4);
+      p {
+        font-family: $regular, sans-serif;
+        font-size: 12px;
+        position: relative;
+        bottom: 3px;
+      }
+    }
     input {
+      background-color: transparent;
       font-family: $regular, sans-serif;
       text-align: center;
       color: #292929;
       font-size: 12px;
       position: relative;
       top: -2px;
-      width: 130px;
-      margin: 0;
-      margin-left: 10px;
+      width: 50px;
+      //margin: 0;
+      //      //margin-left: 10px;
       border: none;
       outline: none;
-      border-bottom: 2px solid rgba(#292929, .4);
+      //border-bottom: 2px solid rgba(#292929, .4);
       &:disabled {
         background-color: transparent;
       }
@@ -3508,7 +3541,7 @@ a {
     margin-top: 8px;
     color: rgba(#292929, .5);
   }
-  .res-descr, .res-price {
+  .res-descr, .res-all {
     &:after {
       content: '';
       position: absolute;
@@ -3519,6 +3552,12 @@ a {
     }
   }
 
+  //.res-price {
+  //  &:after {
+  //    display: none;
+  //  }
+  //}
+
   .res-descr {
     p {
       margin-bottom: 10px;
@@ -3526,7 +3565,7 @@ a {
   }
 
   .res-price {
-    margin-top: 40px;
+    margin-top: 30px;
     p {
       margin-bottom: 20px;
     }
@@ -3539,8 +3578,10 @@ a {
   }
 
   .res-all {
-    margin-top: 30px;
+    margin-bottom: 5px;
+    padding-bottom: 10px;
     p {
+      padding-bottom: 10px;
       font-family: $bold, sans-serif;
       font-size: 24px;
       color: #292929;
@@ -5575,6 +5616,27 @@ a {
       a {
         font-size: 12px;
         line-height: 14px;
+      }
+    }
+  }
+
+  .send-wrap input[type=text] {
+    width: 70%;
+  }
+
+  .square-header, .installment-header {
+    label {
+      .inp-block {
+        p {
+          bottom: 0px;
+        }
+      }
+      .bl-all {
+        .inp-block {
+          p {
+            bottom: -5px;
+          }
+        }
       }
     }
   }
