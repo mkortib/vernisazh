@@ -5641,6 +5641,14 @@ a {
     }
   }
 
+  .installment-header, .square-header {
+    label {
+      input {
+        width: 55px;
+      }
+    }
+  }
+
 }
 
 @media only screen and (max-width: 376px) {

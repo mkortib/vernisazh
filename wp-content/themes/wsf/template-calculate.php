@@ -148,7 +148,7 @@ get_header() ?>
                                         <label>
                                             <h4>Выберите площадь вашей квартиры:</h4>
                                             <div class="inp-block">
-                                                <input type="text" value="56.22" name="swuarevalue" id="squareVal" placeholder="56.22"/>
+                                                <input type="text" value="" name="swuarevalue" id="squareVal" placeholder="22"/>
                                                 <p>м<sup>2</sup></p>
                                             </div>
                                         </label>
@@ -202,7 +202,7 @@ get_header() ?>
                                             <h4>Укажите первый взнос:</h4>
                                             <div class="bl-all">
                                                 <div class="inp-block">
-                                                    <input type="text" value="" name="installmentevalue" id="instVal"  placeholder="min 50 000"/>
+                                                    <input type="text" value="" name="installmentevalue" id="instVal"  placeholder="0"/>
                                                     <p>грн</p>
                                                 </div>
                                                 <div class="inp-block">
@@ -213,9 +213,9 @@ get_header() ?>
                                         </label>
                                     </div>
                                     <div class="installment-calc">
-                                        <p id="minval">50 000 грн</p>
-                                        <input type="range" value="50000" name="intallment" id="frstIns" min="50000" max="1200000" step="1000" />
-                                        <p id="maxval">1 000 000 грн</p>
+                                        <p id="minval">0 грн</p>
+                                        <input type="range" value="0" name="intallment" id="frstIns" min="0" max="0" step="1000" />
+                                        <p id="maxval">0 грн</p>
                                     </div>
 
                                 </div>

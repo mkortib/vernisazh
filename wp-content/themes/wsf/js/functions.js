@@ -196,6 +196,7 @@
     }
 
     var squareRange;
+    var room;
     var squareVal = $('#squareVal').val();
     var instalVal = $("#instVal").val();
     var instalPer;
@@ -210,44 +211,108 @@
     var minval;
     var maxval;
 
+    function accesstosection(roominp) {
+        if (roominp != undefined) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function aceestosquare(roominp, sectinp) {
+        if (roominp != undefined && sectinp != undefined) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function aceestorass(roominp, sectinp, squareinp) {
+        if (roominp != undefined && sectinp != undefined && squareinp != undefined) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function aceestoinstall(roominp, sectinp, squareinp, rassr) {
+        if (roominp != undefined && sectinp != undefined && squareinp != undefined && rassr != undefined) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function acees(roominp, sectinp, squareinp, rassr, instal) {
+        if (roominp != undefined && sectinp != undefined && squareinp != undefined && rassr != undefined && instal != undefined) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     $(".section-amount input").click(function (){
-       section = $(this).val();
+        if (accesstosection(room)) {
+            section = $(this).val();
+        } else {
+            alert("Выберите количество комнат");
+            $('.section-amount').find('input[type=radio]').prop( "checked", false );
+        }
+    });
+
+    $(".room-amount input").click(function (){
+        room = $(this).val();
     });
 
     $(".credit-amount input").click(function (){
-        curmonth = $(this).val();
+        if(aceestorass(room, section, squareVal)) {
+            curmonth = $(this).val();
+        } else {
+            alert("Выберите удобный период рассрочки")
+            $('.credit-amount').find('input[type=radio]').prop( "checked", false );
+        }
     });
 
+
     $("#squareMeasure").on('input', function() {
-        squareRange = $(this).val();
-        minval = (squareVal * section * 30) / 100;
-        maxval = (squareVal * section * 95) / 100;
-        $("#squareVal").val(squareRange);
-        $("#minval").html(minval.toFixed(0) + ' грн');
-        $("#maxval").html(maxval.toFixed(0) + ' грн');
-        $("#frstIns").attr("min", minval.toFixed(0));
-        $("#frstIns").attr("max" ,maxval.toFixed(0));
+        if (aceestosquare(room, section)) {
+            squareVal = $(this).val();
+            minval = (squareVal * section * 30) / 100;
+            maxval = (squareVal * section * 95) / 100;
+            $("#squareVal").val(squareVal);
+            changeMinMax(minval, maxval);
+        } else {
+            alert("Выберите количество комнат и секцию");
+            $(this).val('');
+        }
+
     });
 
     $("#squareVal").on('input', function() {
-        squareVal = $(this).val();
-        minval = (squareVal * section * 30) / 100;
-        maxval = (squareVal * section * 75) / 100;
-        $("#squareMeasure").val(squareVal);
-        $("#minval").html(minval.toFixed(0) + ' грн');
-        $("#maxval").html(maxval.toFixed(0) + ' грн')
+        if (aceestosquare(room, section)) {
+            squareVal = $(this).val();
+            minval = (squareVal * section * 30) / 100;
+            maxval = (squareVal * section * 95) / 100;
+            // if (measureSquare($(this).val(), 14, 22)) {
+            //     alert("Не корректно введена площадь");
+            //     $(this).val('');
+            // } else {
+                $("#squareMeasure").val(squareVal);
+                changeMinMax(minval, maxval);
+            // }
+        } else {
+            alert("Выберите количество комнат и секцию");
+            $(this).val('');
+        }
     });
 
-    // $("#instVal").on('input', function() {
-    //     instalVal = $(this).val();
-    //     $("#frstIns").val(instalVal);
-    // });
+
 
     $("#instVal").on('input', function() {
-        // $(this).val($(this).val().replace (/\D/, ''));
-        instalVal = $(this).val();
-        $("#frstIns").val(instalVal);
-        if ((instalVal != '') && (squareVal != '' || squareVal != 0) && (section != undefined) && (curmonth != undefined)) {
+        if (aceestoinstall(room, section, squareVal, curmonth)) {
+            instalVal = $(this).val();
+            $("#frstIns").val(instalVal);
             var res = instalVal / (squareVal * section) * 100;
             rassroch = (squareVal * section) - instalVal;
             month = rassroch / curmonth;
@@ -255,41 +320,28 @@
             month5per = (rassroch - (rassroch * 5 / 100)) / curmonth;
             $("#pers").val(res.toFixed(2));
 
-            $(".payformouth").html(month.toFixed(0) + " грн/мес");
-            $(".rostr-sum").html(rassroch + " грн");
-            $(".priseofmtr").html(section + " грн");
-            $(".finst").html(instalVal + " грн");
-
-            $("#dis0").html(month.toFixed(0));
-            $("#dis1").html(month3per.toFixed(0));
-            $("#dis2").html(month5per.toFixed(0));
-
+            cnageResult(month, rassroch, section, instalVal, month3per, month5per);
         } else {
-            alert ("Проверьте корректность данных");
+            alert("Выберите кол. комнат, секцию, метраж, период рассрочки");
+            $(this).val('');
         }
+
     });
 
     $("#frstIns").on('input', function() {
-        var instRange = $(this).val();
-        // var arrNumb = instRange.split('');
-        // var zeroCount = 0;
-        // var str;
-        $("#instVal").val(instRange);
-        if ((squareVal != '' || squareVal != 0) && (section != undefined) && (curmonth != undefined)) {
+        if (aceestoinstall(room, section, squareVal, curmonth)) {
+            var instRange = $(this).val();
+            $("#instVal").val(instRange);
             var res = instRange / (squareVal * section) * 100;
-
+            rassroch = (squareVal * section) - instRange;
+            month = rassroch / curmonth;
+            month3per = (rassroch - (rassroch * 3 / 100)) / curmonth;
+            month5per = (rassroch - (rassroch * 5 / 100)) / curmonth;
             $("#pers").val(res.toFixed(2));
-            $(".payformouth").html(month.toFixed(2) + " грн/мес");
-            $(".rostr-sum").html(rassroch + " грн");
-            $(".priseofmtr").html(section + " грн");
-            $(".finst").html(instalVal + " грн");
-
-            $("#dis0").html(month.toFixed(0));
-            $("#dis1").html(month3per.toFixed(0));
-            $("#dis2").html(month5per.toFixed(0));
-
+            cnageResult(month, rassroch, section, instRange, month3per, month5per);
         } else {
-            alert ("Проверьте корректность данных");
+            alert("Выберите кол. комнат, секцию, метраж, период рассрочки");
+            $(this).val('');
         }
     });
 
@@ -305,6 +357,32 @@
         $(this).val($(this).val().replace(/[0-9\\/^$.|?*+\-_()]/g, ""));
     });
 
+    function changeMinMax(first, second) {
+        $("#minval").html(first.toFixed(0) + ' грн');
+        $("#maxval").html(second.toFixed(0) + ' грн');
+        $("#frstIns").attr("min", first.toFixed(0));
+        $("#frstIns").attr("max", second.toFixed(0));
+    }
+
+    function cnageResult(month, rassr, sect, intall, month3, month5) {
+        $(".payformouth").html(month.toFixed() + " грн/мес");
+        $(".rostr-sum").html(rassr + " грн");
+        $(".priseofmtr").html(sect + " грн");
+        $(".finst").html(intall + " грн");
+
+        $("#dis0").html(month.toFixed());
+        $("#dis1").html(month3.toFixed());
+        $("#dis2").html(month5.toFixed());
+
+    }
+
+    function measureSquare(value, minval, maxval) {
+        if ((parseFloat(value) < minval) || (value > maxval)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 
 })(jQuery);
